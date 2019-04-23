@@ -25,12 +25,11 @@ import static com.google.gson.internal.bind.TypeAdapters.URL;
 
 public class AirlinesFragment extends Fragment {
     private static final String URL = "https://api.flightstats.com/flex/airlines/rest/v1/json/active?" +
-            "appId=23149a1a&" +
-            "appKey=ae9747c131d7705088658e2212fec86c";
+            "appId=23149a1a" +
+            "&appKey=ae9747c131d7705088658e2212fec86c";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //setContentView(R.layout.airlines_fragment);
 
         final View view = inflater.inflate(R.layout.airlines_fragment, container, false);
         ImageButton findButton = (ImageButton) view.findViewById(R.id.btn_find_airline);
@@ -54,83 +53,24 @@ public class AirlinesFragment extends Fragment {
                             for (int i = 0; i < jsonArray.length() - 1; i++) {
                                 JSONObject jsonObj = jsonArray.getJSONObject(i);
                                 name =  name + i + ": " + jsonObj.getString("name") + "\n";
-
                             }
-
                             textView.setText(name);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-
-
-
-
-
-
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                         Toast.makeText(getActivity() , "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
                 RequestQueue queque = Volley.newRequestQueue(getActivity());
                 queque.add(request);
-
             }
         });
-
-        //return inflater.inflate(R.layout.airlines_fragment, container, false);
         return view;
     }
 
-    /*public void find(final View view){
-        StringRequest request = new StringRequest(URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                TextView textView = (TextView) getView().findViewById(R.id.text_view_results);
-                JSONObject jsonObject;
-                JSONArray jsonArray;
-                String name = "";
-                try {
-
-                    jsonObject = new JSONObject(response);
-                    jsonArray = jsonObject.getJSONArray("airlines");
-
-                    for (int i = 0; i < jsonArray.length() - 1; i++) {
-                        JSONObject jsonObj = jsonArray.getJSONObject(i);
-                        name =  name + i + ": " + jsonObj.getString("name") + "\n";
-
-                    }
-
-                    textView.setText(name);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-
-
-
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getActivity() , "Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        RequestQueue queque = Volley.newRequestQueue(getActivity());
-        queque.add(request);
-
-    }*/
 }

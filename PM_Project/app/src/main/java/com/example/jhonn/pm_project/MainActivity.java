@@ -93,6 +93,8 @@ public class MainActivity extends AppCompatActivity
             fm.beginTransaction().replace(R.id.content_layout, new AirlinesFragment()).commit();
 
         } else if (id == R.id.nav_gallery) {
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction().replace(R.id.content_layout, new FlightsNearFragment()).commit();
 
         } else if (id == R.id.nav_slideshow) {
 
