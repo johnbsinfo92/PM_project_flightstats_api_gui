@@ -1,5 +1,6 @@
 package com.example.jhonn.pm_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -100,7 +101,9 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fm = getSupportFragmentManager();
             fm.beginTransaction().replace(R.id.content_layout, new GraphFragment()).commit();
         } else if (id == R.id.nav_manage) {
-
+            Intent intentMapsActivity;
+            intentMapsActivity = new Intent(this,LoginActivity.class);
+            startActivity(intentMapsActivity);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
